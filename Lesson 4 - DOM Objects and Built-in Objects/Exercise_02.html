@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /**Use the Math object to write a function to return the volume of a round chimney,given its radius and height in meters as arguments. The volume returned should be rounded up to the nearest cubic meter.
+        Formula: Pi * r^2 * h
+        */
+ 
+        //Function to calculate the volume of a chimney given both radius and height
+        function calculateVolume(radius, height) {
+            return Math.ceil(Math.PI * Math.pow(radius, 2) * height);
+        }
+        
+
+        //Allows the script to be loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            const result = calculateVolume(2, 5);
+            // Display result
+            document.getElementById("example1").innerText = 'The Volume is ' + result;    
+        });
+    </script>
+</head>
+<body>
+    <p id="example1"></p>
+</body>
+</html>

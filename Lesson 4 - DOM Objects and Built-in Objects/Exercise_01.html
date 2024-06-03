@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /**
+        output the date and time as a single string, such as:
+        25 Dec 2011 12:35
+        */
+        function printTime() {
+            var output = "";
+            var currentTime = new Date();
+
+            // Array to map month index to month name
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            var day = currentTime.getDate();
+            var month = months[currentTime.getMonth()];
+            var year = currentTime.getFullYear();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            output += day + " " + month + " " + year + " " + hours + ":" + minutes;
+            document.getElementById("div1").innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    Current Date and Time: <br>
+    <div id="div1"></div>
+    <script>
+        printTime();
+    </script>
+    <input type="button" onclick="location.reload()" value="refresh">
+</body>
+</html>

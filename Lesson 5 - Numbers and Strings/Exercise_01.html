@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        /**
+        Write a JavaScript function to remove a given number of characters from the end of a string
+        */
+
+        // Get user's word
+        var myWord = prompt("Your Word:");
+        // Get User's number
+        var myNum = prompt("Number of characters remove:");
+
+        // Function to remove number of character from the back end of word
+        function removeChar(myWord, myNum) {
+            return myWord.substring(0, myWord.length - myNum);
+        }
+
+        //Allows the script to be loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Display result
+            document.getElementById("example1").innerText = 
+            "Your word was: " + myWord +
+            "\n Removed: " + myNum + " character" +
+            "\n Result: " + removeChar(myWord, parseInt(myNum));
+        });
+    </script>
+</head>
+<body>
+    <p id="example1"></p>
+</body>
+</html>

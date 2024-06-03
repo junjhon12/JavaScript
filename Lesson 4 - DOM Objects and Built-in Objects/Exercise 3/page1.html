@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>Page 1</h1>
+    <button onclick="goBack()">Back</button>
+    <button onclick="goForward()">Forward</button>
+    <button onclick="toPage('page2.html')">To Page 2</button>
+
+    <script>
+        function goBack() {
+            history.back();
+        }
+        function goForward() {
+            history.forward();
+        }
+        function toPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
