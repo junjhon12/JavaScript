@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /**
+        Write a JavaScript function to capitalize the first letter of each word in a given string
+        */
+
+        // Assign sentence
+        const sentence = "ello there friend, he we are";
+
+        // function to capitalize every first word
+        function capFirstWord(sentence) {
+            // Split the sentence up by words
+            step1 = sentence.split(" ");
+            // Grab each first character than capitalize it
+            step2 = step1.map(step1 => step1.charAt(0).toUpperCase());
+            // Retain the remaining characters of each words
+            step3 = step1.map(step1 => step1.slice(1))
+            // Join the first character back to the rest of the words
+            step4 = step2.map((letter, index) => letter + step3[index]);
+            // Space the conjoin words apart
+            step5 = step4.join(' ');
+            return step5;
+        }
+
+        /**
+        Efficient method:
+        function capFirstWord(sentence) {
+            return sentence.replace(/\b\w/g, char => char.toUpperCase());
+        }
+        Uses a regular expression to find each word boundary (\b) followed by a word character (\w),and then replaces that character with its uppercase version.
+        */
+
+        //Allows the script to be loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Display result
+            document.getElementById("example1").innerText = 
+            "Your word sentence: " + sentence +
+            "\n After function: " + capFirstWord(sentence);
+        });
+    </script>
+</head>
+<body>
+    <p id="example1"></p>
+</body>
+</html>
