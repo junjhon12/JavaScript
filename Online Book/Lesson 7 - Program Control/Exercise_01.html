@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        /**
+        you learned how to get the current day of the week. Write a program using a switch statement to output a different message to the user, depending on what day it is today
+        */
+
+        // Function to get message based on current day of the week
+        function todayMsg() {
+            //Get current day
+            var todayDate = new Date(); 
+            // Array of day names
+            days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            // Get name of current day
+            day = days[todayDate.getDay()]
+            // Use a switch statement to return a message based on the current day
+            switch(day) {
+                case "Sunday":
+                    return "It is Sunday, half good half bad";
+                case "Monday":
+                    return "Dammit, Monday";
+                case "Tuesday":
+                    return "Oh man, Tuesday";
+                case "Wednesday":
+                    return "Eh, Wednesday";
+                case "Thursday":
+                    return "So close, Thursday";
+                case "Friday":
+                    return "YES?! Friday";
+                case "Saturday":
+                    return "OH YEA!! Saturday";
+                default:
+                    return "Unknown day";  // Fallback in case something goes wrong
+            }
+        }
+
+        // Run the script once the document is fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            const result = todayMsg();  // Get the message for today
+
+            // Create a new paragraph element
+            const output = document.createElement("p");
+            // Set the text content of the paragraph
+            output.innerText = 'The message today is ' + result;
+            // Append the paragraph to the body
+            document.body.appendChild(output);    
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
