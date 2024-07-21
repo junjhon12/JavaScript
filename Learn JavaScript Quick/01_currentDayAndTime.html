@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript current day and time</title>
+</head>
+<body>
+    <script>
+        // Create a new Date object
+        const date = new Date();
+        
+        // Get the current year
+        const year = date.getFullYear();
+        
+        // Get the current hour
+        const hours = date.getHours();
+        
+        // Get the current minutes
+        const minutes = date.getMinutes();
+        
+        // Get the current month (note: months are zero-indexed, so add 1)
+        const month = date.getMonth() + 1;
+        
+        // Get the current day of the month
+        const day = date.getDate();
+        
+        /*
+        // Array of month names (not used in this code)
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let month = months[date.getMonth()];
+        
+        // Array of day names (not used in this code)
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let day = days[date.getDay()]
+        */
+        
+        // Construct the current date string in MM/DD/YYYY format
+        const currentDate = month + "/" + day + "/" + year;
+        
+        // Format the minutes to always display two digits
+        // If minutes are less than 10 then with '0' else use minutes as is
+        const formattedMinutes = (minutes < 10 ? '0' + minutes : minutes);
+        
+        // Determine AM or PM based on the current hour
+        // If hours are 12 or greater, it's PM, otherwise it's AM
+        const period = (hours >= 12 ? 'PM' : 'AM');
+        
+        // Write the current date and time to the document
+        document.write("Current date is: " + currentDate + ", and the time is " + hours + ":" + formattedMinutes + " " + period);
+    </script>    
+</body>
+</html>

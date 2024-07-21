@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The area of a triangle</title>
+    <script>
+        // This function calculates the area of a triangle
+        function calTriangleArea(form) {
+            // Retrieve the base and height values from the form
+            const base = parseFloat(form.baseNum.value); // Convert base value to a number
+            const height = parseFloat(form.heightNum.value); // Convert height value to a number
+            // Calculate the area of the triangle using the formula: (base * height) / 2
+            let area = (height * base) / 2;
+            if (base || height == 0) {
+                area = 0
+            }
+            
+            // Get the HTML element with the id "resultArea"
+            const resultArea = document.getElementById("resultArea");
+            
+            // Update the content of the "resultArea" element to display the calculated area
+            resultArea.innerHTML = "The Triangle area is: " + area;
+            
+            // Return false to prevent the form from submitting and refreshing the page
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <!-- Form for user input -->
+    <form action="" onsubmit="return calTriangleArea(this)" method="POST">
+        <!-- Input field for the base of the triangle -->
+        <label for="base">b (base):</label>
+        <input type="number" id="baseNum" name="baseNum" value="0"><br>
+        
+        <!-- Input field for the height of the triangle -->
+        <label for="height">h (height):</label>
+        <input type="number" id="heightNum" name="heightNum" value="0"><br>
+        
+        <!-- Submit button to calculate the area -->
+        <input type="submit" value="Submit">
+    </form>
+    
+    <!-- Area to display the result of the calculation -->
+    <div id="resultArea"></div>
+</body>
+</html>
