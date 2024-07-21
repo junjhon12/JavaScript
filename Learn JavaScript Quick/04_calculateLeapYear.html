@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Leap Year</title>
+    <script>
+        // Function to determine if a year is a leap year
+        function findLeapYear(form) {
+            // Get the input year from the form
+            const inputYear = parseInt(form.yearNum.value);
+            // Get the current year
+            const currentYear = new Date().getFullYear();
+
+            // Check if the input year is a leap year
+            let output1;
+            if (inputYear % 4 == 0 && (inputYear % 100 != 0 || inputYear % 400 == 0)) {
+                output1 = "The year " + inputYear + " is a Leap Year";
+            } else {
+                output1 = "The year " + inputYear + " is NOT a Leap Year";
+            }
+
+            // Check if the current year is a leap year
+            let output2;
+            if (currentYear % 4 == 0 && (currentYear % 100 != 0 || currentYear % 400 == 0)) {
+                output2 = "The current year " + currentYear + " is a Leap Year";
+            } else {
+                output2 = "The current year " + currentYear + " is NOT a Leap Year";
+            }
+
+            // Display the results in the result area
+            const result = document.getElementById("resultArea");
+            result.innerHTML = output1 + "<br>" + output2;
+            
+            // Prevent form submission
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <!-- Form to input the year -->
+    <form action="" onsubmit="return findLeapYear(this)" method="POST">
+        <label for="year">Year:</label>
+        <input type="number" id="yearNum" name="yearNum" value="0"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <!-- Area to display the result -->
+    <div id="resultArea"></div>
+</body>
+</html>
