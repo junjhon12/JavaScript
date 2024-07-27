@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript program to calculate multiplication and division
+        of two numbers</title>
+</head>
+<body>
+    <script>
+        /** My answer
+        function multiply(a, b) {
+            return a * b;
+        }
+        function divide(a, b) {
+            return a / b;
+        }
+        function outputResult(a, b) {
+            const sum1 = multiply(a, b);
+            const sum2 = divide(a, b);
+            return `Multiply: ${sum1}, Divide: ${sum2}`;
+        }
+        function processInputs() {
+            const input1 = parseFloat(document.getElementById('numOne').value);
+            const input2 = parseFloat(document.getElementById('numTwo').value);
+
+            if (!isNaN(input1) && !isNaN(input2)) {
+                const result = outputResult(input1, input2);
+                document.getElementById('output').textContent = result;
+            } else {
+                document.getElementById('output').textContent = 'Please enter valid numbers.';
+            }
+        } **/
+        // THe answer
+        function multiplyBy(){
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+            document.getElementById("result").innerHTML = num1 *
+            num2;
+        } 
+        function divideBy(){
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+            document.getElementById("result").innerHTML = num1 / num2;
+        }
+    </script>
+    <!-- My answer
+    <form id="inputForm">
+        <label for="numOne">Number 1:</label>
+        <input type="number" id="numOne" name="numOne" required>
+        <br>
+        <label for="numTwo">Number 2:</label>
+        <input type="number" id="numTwo" name="numTwo" required>
+        <br>
+        <button type="button" onclick="processInputs()">Submit</button>
+    </form>
+    <p id="output"></p>-->
+    <form>
+        1st Number : <input type="text" id="firstNumber" /><br>
+        2nd Number: <input type="text" id="secondNumber" /><br>
+        <input type="button" onClick="multiplyBy()" Value="Multiply"/>
+        <input type="button" onClick="divideBy()" Value="Divide" />
+    </form>
+    <p>The Result is : <br>
+    <span id = "result"></span>
+    </p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Function to convert temperatures between Celsius and Fahrenheit
+        function tempConversion() {
+            // Declare variables for Fahrenheit and Celsius
+            let Fahrenheit;
+            let Celsius;
+
+            // Check if the Celsius input is a number
+            if (!isNaN(document.getElementById("celsiusNum").value)) {
+                // Convert Celsius to Fahrenheit
+                Fahrenheit = ((document.getElementById("celsiusNum").value) * (9/5)) + 32;
+            } else {
+                // Default value if input is not a number
+                Fahrenheit = 32;
+            }
+
+            // Check if the Fahrenheit input is a number
+            if (!isNaN(document.getElementById("fahrenheitNum").value)) {
+                // Convert Fahrenheit to Celsius
+                Celsius = ((document.getElementById("fahrenheitNum").value) - 32) * (5/9);
+            } else {
+                // Default value if input is not a number
+                Celsius = -17.78;
+            }
+
+            // Display the conversion results in the HTML element with id="output"
+            document.getElementById("output").innerHTML = 
+            "Celsius: " + Celsius + "\u00B0" + "<br>" +
+            "Fahrenheit: " + Fahrenheit + "\u00B0";
+        }
+    </script>
+    <form>
+        <!-- Input field for temperature in Celsius -->
+        Temperature in Celsius: <input type="text" id="celsiusNum"/><br>
+        <!-- Input field for temperature in Fahrenheit -->
+        Temperature in Fahrenheit: <input type="text" id="fahrenheitNum"/><br>
+        <!-- Button to trigger the temperature conversion function -->
+        <input type="button" onclick="tempConversion()" value="Convert">
+    </form>
+    <p>The conversion result: <br>
+    <!-- Span to display the conversion result -->
+    <span id="output"></span>
+    </p>
+</body>
+</html>

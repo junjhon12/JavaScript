@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Replacement</title>
+    <script>
+        function changeChar() {
+            const charToReplace = document.getElementById("charToReplace").value;
+            const replacementChar = document.getElementById("replacementChar").value;
+            const inputText = document.getElementById("inputText").value;
+
+            // Ensure only one character is being input for replacement
+            if (charToReplace.length !== 1 || replacementChar.length !== 1) {
+                document.getElementById("message").innerText = "Please enter single characters only for both fields.";
+                return;
+            }
+
+            // Replace all occurrences of charToReplace with replacementChar
+            const result = inputText.split(charToReplace).join(replacementChar);
+
+            // Update the DOM with the result
+            document.getElementById("output").innerText = result;
+            document.getElementById("message").innerText = `Changed "${charToReplace}" to "${replacementChar}"`;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return false;">
+        <label for="charToReplace">Character to replace:</label>
+        <input type="text" id="charToReplace" maxlength="1"><br>
+        <label for="replacementChar">Replacement character:</label>
+        <input type="text" id="replacementChar" maxlength="1"><br>
+        <label for="inputText">Text to modify:</label>
+        <input type="text" id="inputText"><br>
+        <input type="button" value="Submit" onclick="changeChar()">
+    </form>
+    <p id="message"></p>
+    <p>
+        Result: <span id="output"></span>
+    </p>
+</body>
+</html>

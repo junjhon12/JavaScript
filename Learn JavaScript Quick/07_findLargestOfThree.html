@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Largest Number</title>
+    <script>
+        function findLargest() {
+            // Get the values of the inputs and convert them to numbers
+            let num1 = parseFloat(document.getElementById("numOne").value);
+            let num2 = parseFloat(document.getElementById("numTwo").value);
+            let num3 = parseFloat(document.getElementById("numThree").value);
+
+            // Store the numbers in an array
+            let numList = [num1, num2, num3];
+
+            // Check if all inputs are valid numbers
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                document.getElementById("message").innerHTML = "Please enter 3 valid numbers";
+            } else {
+                // Display the numbers and the largest number
+                document.getElementById("numList").innerHTML = numList.join(", ");
+                document.getElementById("biggest").innerHTML = Math.max(...numList);
+                document.getElementById("message").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        Number 1: <input type="text" id="numOne"><br>
+        Number 2: <input type="text" id="numTwo"><br>
+        Number 3: <input type="text" id="numThree"><br>
+        <input type="button" value="Submit" onclick="findLargest()">
+    </form>
+    <p>
+        Given numbers: <span id="numList"></span><br>
+        Biggest number: <span id="biggest"></span><br>
+        <span id="message"></span>
+    </p>
+</body>
+</html>
