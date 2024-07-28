@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character replace with letter one over</title>
+    <script>
+        function stringChange() {
+            // Get the value of the input field with id 'inputString'
+            const input = document.getElementById('inputString').value;
+
+            // Check if the input is empty or consists of only whitespace characters
+            if (input.trim() === "") {
+                // If the input is empty, display an error message
+                document.getElementById("ifError").innerText = "Please enter a word or sentence.";
+                return;
+            } else {
+                // Initialize an empty string to store the result
+                let result = '';
+                
+                // Loop through each character of the input string
+                for (let i = 0; i < input.length; i++) {
+                    const char = input.charAt(i);
+                    // Check if the character is a letter
+                    if (char.match(/[a-zA-Z]/)) {
+                        // Get the ASCII value of the character, add 1 to it, and convert it back to a character
+                        result += String.fromCharCode(char.charCodeAt(0) + 1);
+                    } else {
+                        // If it's not a letter, leave it unchanged
+                        result += char;
+                    }
+                }
+                
+                // Display the resulting string in the element with id 'output'
+                document.getElementById("output").innerText = result;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return false">
+        <!-- Label and input field for the user to enter a word or sentence -->
+        <label for="inputString">Enter word or sentence:</label>
+        <input type="text" id="inputString"><br>
+        <!-- Button to trigger the stringChange function when clicked -->
+        <input type="button" value="Submit" onclick="stringChange()">
+        <!-- Paragraph to display error messages -->
+        <p id="ifError"></p>
+        <!-- Paragraph to display the result -->
+        <p>
+            Result: <span id="output"></span>
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize First Letter of Each Word</title>
+    <script>
+        function capFirstChar() {
+            // Get the value of the input field with id 'inputString'
+            const userInput = document.getElementById('inputString').value;
+
+            // Check if the input is empty or consists of only whitespace characters
+            if (userInput.trim() === "") {
+                // If the input is empty, display an error message
+                document.getElementById('errorMessage').innerText = "Please enter a word or sentence.";
+                return;
+            } else {
+                // Split the input string into an array of words
+                const words = userInput.split(" ");
+                // Initialize an empty string to store the result
+                let output = '';
+
+                // Loop through each word in the array
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+                    if (word.length > 0) {
+                        const firstLetter = word.charAt(0);
+                        if (firstLetter.match(/[a-zA-Z]/)) {
+                            // Capitalize the first letter and concatenate with the rest of the word
+                            output += firstLetter.toUpperCase() + word.slice(1);
+                        } else {
+                            // If the first character is not a letter, leave the word unchanged
+                            output += word;
+                        }
+                    }
+                    // Add a space after each word except the last one
+                    if (i < words.length - 1) {
+                        output += ' ';
+                    }
+                }
+
+                // Clear any previous error message
+                document.getElementById('errorMessage').innerText = "";
+
+                // Display the resulting string in the element with id 'output'
+                document.getElementById('output').innerText = output;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return false">
+        <!-- Label and input field for the user to enter a word or sentence -->
+        <label for="inputString">Enter word or sentence:</label>
+        <input type="text" id="inputString"><br>
+        <!-- Button to trigger the capFirstChar function when clicked -->
+        <input type="button" value="Submit" onclick="capFirstChar()">
+    </form>
+    <!-- Paragraph to display error messages -->
+    <p id="errorMessage" style="color: red;"></p>
+    <!-- Paragraph to display the result -->
+    <p>
+        Result: <span id="output"></span>
+    </p>
+</body>
+</html>
