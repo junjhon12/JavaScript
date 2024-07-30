@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript program to count the number of vowels in a given string.</title>
+</head>
+<body>
+
+    <script>
+        // Function to count the number of vowels in a given string
+        function countVowel() {
+            let count = 0; // Initialize count for vowels
+            let inputString = document.getElementById('inputString').value; // Get user input
+            let vowels = ['a', 'e', 'i', 'o', 'u']; // Define array of vowels
+
+            // Check if the input string is empty
+            if (inputString === '') {
+                document.getElementById("errorMessage").innerHTML = "Please enter a valid string";
+                return; // Exit the function if input is invalid
+            } else {
+                // Loop through each character in the input string
+                for (const element of inputString) {
+                    // Convert character to lowercase and check if it's a vowel
+                    if (vowels.includes(element.toLowerCase())) {
+                        count += 1; // Increment count if character is a vowel
+                    }
+                }
+
+                // Clear any previous error messages
+                document.getElementById('errorMessage').innerText = "";
+
+                // Display the count of vowels
+                document.getElementById('output').innerText = count;
+            }
+        }
+    </script>
+
+    <!-- Form to get user input -->
+    <form onsubmit="return false">
+        <label for="inputString">Enter word or sentence:</label>
+        <input type="text" id="inputString"><br>
+        <input type="button" value="Submit" onclick="countVowel()"><br>
+    </form>
+
+    <!-- Paragraph to display error messages -->
+    <p id="errorMessage"></p>
+
+    <!-- Paragraph to display the result -->
+    <p>
+        Number of vowels counted: <span id="output"></span>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Ensures the browser renders the page in the correct character set -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the viewport to make the website responsive to screen sizes -->
+    <title>Document</title>
+    <!-- Sets the title of the document that appears on the browser tab -->
+    <script>
+        // Start of the JavaScript code
+        function timeConversion() {
+            // Declare a variable to store the output
+            let output = '';
+            // Get the value from the input field with id 'inputNumber'
+            const userInput = document.getElementById('inputNumber').value;
+
+            // Check if the input is not a number or if it's an empty string
+            if (isNaN(userInput) || userInput === '') {
+                // Display an error message if the input is invalid
+                document.getElementById("errorMessage").innerHTML = "Please enter a valid number";
+                return; // Exit the function if input is not a number
+            }
+
+            // Convert the input value to a number for calculations
+            const inputValue = Number(userInput);
+
+            // Check if the input value is exactly 60
+            if (inputValue == 60) {
+                let hour = 1; // Set hour to 1
+                let minutes = "00"; // Set minutes to "00"
+                // Format the output as "1:00"
+                output = `${hour}:${minutes}`;
+            } else if (inputValue < 60) {
+                // Check if the input value is less than 60
+                let hour = 0; // Set hour to 0
+                // Format the minutes to always have two digits
+                output = `${hour}:${inputValue.toString().padStart(2, '0')}`;
+            } else if (inputValue > 60) {
+                // Check if the input value is greater than 60
+                // Calculate the number of hours
+                let hour = Math.floor(inputValue / 60);
+                // Calculate the remaining minutes and ensure they have two digits
+                let minutes = (inputValue % 60).toString().padStart(2, '0');
+                // Format the output as "hours:minutes"
+                output = `${hour}:${minutes}`;
+            }
+
+            // Clear any existing error message
+            document.getElementById('errorMessage').innerText = "";
+            // Display the user input in the span with id 'userInput'
+            document.getElementById('userInput').innerText = userInput;
+            // Display the formatted output in the span with id 'output'
+            document.getElementById('output').innerText = output;
+        }
+    </script>
+</head>
+<body>
+    <!-- Create a form that does not submit on its own -->
+    <form onsubmit="return false">
+        <label for="inputNumber">Enter a whole number:</label>
+        <!-- Input field for the user to enter a number -->
+        <input type="text" id="inputNumber"><br>
+        <!-- Button to trigger the timeConversion function -->
+        <input type="button" value="Submit" onclick="timeConversion()"><br>
+    </form>
+    <!-- Paragraph to display error messages -->
+    <p id="errorMessage"></p>
+    <p>
+        <!-- Span to display the user input -->
+        User number: <span id="userInput"></span><br>
+        <!-- Span to display the converted time -->
+        Converted Time: <span id="output"></span>
+    </p>
+</body>
+</html>
+<!--
+How an AI would code it
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Conversion</title>
+    <script>
+        // Function to convert minutes to hours and minutes
+        function timeConversion() {
+            // Get the value from the input field with id 'inputNumber'
+            const userInput = document.getElementById('inputNumber').value.trim();
+
+            // Check if the input is not a number or if it's an empty string
+            if (isNaN(userInput) || userInput === '') {
+                // Display an error message if the input is invalid
+                document.getElementById("errorMessage").innerHTML = "Please enter a valid number";
+                return; // Exit the function if input is not a number
+            }
+
+            // Convert the input value to a number for calculations
+            const inputValue = Number(userInput);
+            let output;
+
+            // Check if the input value is exactly 60
+            if (inputValue == 60) {
+                output = "1:00"; // Special case for 60 minutes
+            } else {
+                // Calculate the number of hours
+                let hour = Math.floor(inputValue / 60);
+                // Calculate the remaining minutes
+                let minutes = (inputValue % 60).toString().padStart(2, '0'); // Ensure two-digit format
+                // Format the output as "hours:minutes"
+                output = `${hour}:${minutes}`;
+            }
+
+            // Clear any existing error message
+            document.getElementById('errorMessage').innerText = "";
+            // Display the user input in the span with id 'userInput'
+            document.getElementById('userInput').innerText = userInput;
+            // Display the formatted output in the span with id 'output'
+            document.getElementById('output').innerText = output;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return false">
+        <label for="inputNumber">Enter a whole number:</label>
+        <input type="text" id="inputNumber"><br>
+        <input type="button" value="Submit" onclick="timeConversion()"><br>
+    </form>
+    <p id="errorMessage"></p>
+    <p>
+        User number: <span id="userInput"></span><br>
+        Converted Time: <span id="output"></span>
+    </p>
+</body>
+</html>
+-->

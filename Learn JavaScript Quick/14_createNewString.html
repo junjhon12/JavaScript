@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JavaScript program to create a new string without the first and last character.</title>
+</head>
+<body>
+    <script>
+        // Function to generate a new string without the first and last character of the input string
+        function newString() {
+            // Get the value of the input string from the text box
+            let inputString = document.getElementById('userInput').value;
+
+            // Check if the input string is empty, display an error message if true
+            if (inputString === '') {
+                document.getElementById('errorMessage').innerHTML = "Enter valid string";
+                return; // Exit the function if no input is provided
+            }
+
+            // Create a new string by slicing the input string, removing the first and last character
+            let newString = inputString.slice(1, -1);
+
+            // Clear any existing error messages
+            document.getElementById('errorMessage').innerText = "";
+
+            // Display the original input string and the new string in the respective spans
+            document.getElementById('input').innerText = inputString;
+            document.getElementById('output').innerText = newString;
+        }
+    </script>
+
+    <!-- Form to get user input and trigger the newString function -->
+    <form onsubmit="return false">
+        <label for="userInput">Enter String:</label>
+        <input type="text" id="userInput"><br>
+        <input type="button" value="Submit" onclick="newString()"><br>
+    </form>
+
+    <!-- Display areas for error messages, the original input string, and the new string -->
+    <p>
+        <span id="errorMessage"></span><br>
+        Input String: <span id="input"></span><br>
+        New String: <span id="output"></span>
+    </p>
+</body>
+</html>
