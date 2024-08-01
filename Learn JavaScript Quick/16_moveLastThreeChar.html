@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript program to move last three characters to the start
+of a given string. The string length must be 3.</title>
+</head>
+<body>
+    <script>
+        // Function to move the last three characters of a string to the start
+        function replaceCharPlacement() {
+            // Get the value from the input field
+            const string = document.getElementById("userInput").value;
+            
+            // Check if the string is empty or not exactly 3 characters long
+            if (string === '' || string.length !== 3) {
+                // Display an error message if the input is invalid
+                document.getElementById('errorMessage').innerHTML = "Enter a valid string of exactly 3 characters.";
+                // Clear the output if there's an error
+                document.getElementById('output').innerText = "";
+                return;
+            }
+
+            // Move the last three characters to the start
+            let output = string.slice(-3) + string.slice(0, -3);
+
+            // Display the result in the output span
+            document.getElementById('output').innerText = output;
+            // Clear any previous error messages
+            document.getElementById('errorMessage').innerText = '';
+        }
+    </script>
+    <form>
+        <label for="userInput">Enter a string: </label>
+        <input type="text" id="userInput"><br>
+        <!-- Call the replaceCharPlacement function when the button is clicked -->
+        <input type="button" value="Submit" onclick="replaceCharPlacement()">
+    </form>
+    <p>
+        <!-- Span to display any error messages -->
+        <span id="errorMessage" style="color:red;"></span><br>
+        <!-- Span to display the result of the transformation -->
+        Result: <span id="output"></span>
+    </p>
+</body>
+</html>

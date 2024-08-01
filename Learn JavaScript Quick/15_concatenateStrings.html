@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>JavaScript program to concatenate two strings except their
-first character.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JavaScript Program to Concatenate Two Strings Except Their First Character</title>
 </head>
 <body>
-    <form onsubmit="return false">
-        
+    <script>
+        function concatenateString() {
+            // Get the values from the input fields
+            const string1 = document.getElementById("userInput1").value;
+            const string2 = document.getElementById("userInput2").value;
+
+            // Check if either string is empty and display an error message
+            if (string1 === '' || string2 === '') {
+                document.getElementById('errorMessage').innerHTML = "Enter valid strings for both inputs.";
+                document.getElementById('output').innerText = ""; // Clear output if there's an error
+                return;
+            }
+
+            // Remove the first character from each string and concatenate the rest
+            let output = string1.slice(1).concat(string2.slice(1));
+            
+            // Display the result
+            document.getElementById('output').innerText = output;
+            
+            // Clear the error message
+            document.getElementById('errorMessage').innerText = '';
+        }
+    </script>
+    <form>
+        <label for="userInput1">Enter a string: </label>
+        <input type="text" id="userInput1"><br>
+        <label for="userInput2">Enter a string: </label>
+        <input type="text" id="userInput2"><br>
+        <input type="button" value="Submit" onclick="concatenateString()">
     </form>
+    <p>
+        <span id="errorMessage" style="color:red;"></span><br>
+        Result: <span id="output"></span>
+    </p>
 </body>
 </html>
