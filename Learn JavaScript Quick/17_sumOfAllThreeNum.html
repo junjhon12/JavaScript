@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript program to compute the sum of three elements of given integers of length 3.</title>
+</head>
+<body>
+    <script>
+        // Function to calculate the sum of three numbers entered by the user
+        function numSum() {
+            // Get the values entered by the user and convert them to integers
+            const num1 = parseInt(document.getElementById('userNumber1').value);
+            const num2 = parseInt(document.getElementById('userNumber2').value);
+            const num3 = parseInt(document.getElementById('userNumber3').value);
+            
+            // Store the numbers in an array
+            let userNumbers = [num1, num2, num3];
+            
+            // Initialize the sum to zero
+            let sum = 0;
+
+            // Check if any of the inputs are not numbers (NaN)
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                // Display an error message if any input is invalid
+                document.getElementById('errorMessage').innerText = "Please enter valid numbers in all fields.";
+                document.getElementById('output').innerText = '';
+                return;
+            }
+
+            // Calculate the sum of the numbers
+            for (const element of userNumbers) {
+                sum += element;
+            }
+
+            // Display the sum in the output element
+            document.getElementById('output').innerText = sum;
+            // Clear any error messages
+            document.getElementById('errorMessage').innerText = '';
+        }
+    </script>
+
+    <!-- Form for user to input three numbers -->
+    <form>
+        <label>Enter number 1: </label><input type="text" id="userNumber1"><br>
+        <label>Enter number 2: </label><input type="text" id="userNumber2"><br>
+        <label>Enter number 3: </label><input type="text" id="userNumber3"><br>
+        <input type="button" value="Submit" onclick="numSum()">
+    </form>
+
+    <!-- Section to display error messages and the calculated sum -->
+    <p>
+        <span id="errorMessage" style="color: red;"></span><br>
+        Sum: <span id="output"></span>
+    </p>
+</body>
+</html>

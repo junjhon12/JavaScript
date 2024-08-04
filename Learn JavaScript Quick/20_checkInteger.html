@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Check if Numbers are in the Range 50-99</title>
+</head>
+<body>
+    <script>
+        function checkNumber() {
+            // Retrieve and parse the values from the input fields as floating-point numbers
+            let userNumber1 = parseFloat(document.getElementById('userNumber1').value);
+            let userNumber2 = parseFloat(document.getElementById('userNumber2').value);
+
+            // Get the elements where error messages and results will be displayed
+            let errorMessageElement = document.getElementById('errorMessage');
+            let outputElement = document.getElementById('output');
+
+            // Clear any previous error messages and results
+            errorMessageElement.innerHTML = '';
+            outputElement.innerHTML = '';
+
+            // Check if the inputs are not numbers (NaN stands for "Not-a-Number")
+            if (isNaN(userNumber1) || isNaN(userNumber2)) {
+                // If either input is not a number, display an error message
+                errorMessageElement.innerHTML = "Please enter valid numbers.";
+            } else if ((userNumber1 >= 50 && userNumber1 <= 99) || (userNumber2 >= 50 && userNumber2 <= 99)) {
+                // Check if either of the numbers is in the range 50 to 99 (inclusive)
+                // Display "True" if either number is within the specified range
+                outputElement.innerHTML = "True";
+            } else {
+                // If neither number is in the range, display "False"
+                outputElement.innerHTML = "False";
+            }
+        }
+    </script>
+    <!-- Form to capture user input, preventing default submission behavior -->
+    <form onsubmit="event.preventDefault(); checkNumber();">
+        <label for="userNumber1">Enter number 1: </label>
+        <!-- Input field for the first number -->
+        <input type="text" id="userNumber1"><br>
+        <label for="userNumber2">Enter number 2: </label>
+        <!-- Input field for the second number -->
+        <input type="text" id="userNumber2"><br>
+        <!-- Button to trigger the number check -->
+        <input type="submit" value="Check">
+    </form>
+    <!-- Element to display error messages, styled to show in red -->
+    <p id="errorMessage" style="color: red;"></p>
+    <!-- Element to display the result (True or False) -->
+    <p>Result: <span id="output"></span></p>
+</body>
+</html>

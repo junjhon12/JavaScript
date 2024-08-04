@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Check if a Number is a Multiple of 3 or 7</title>
+</head>
+<body>
+    <script>
+        // Function to check if the entered number is a multiple of 3 or 7
+        function checkNumber() {
+            // Get the user's input and attempt to convert it to an integer
+            const userInput = parseInt(document.getElementById('userNumber').value);
+            
+            // Clear any previous error messages
+            document.getElementById('errorMessage').innerText = '';
+            
+            // Validate the input: check if it is a number and if it is positive
+            if (isNaN(userInput) || userInput < 0) {
+                // Display an error message if the input is invalid
+                document.getElementById('errorMessage').innerText = "Please enter a valid positive number.";
+                document.getElementById('output').innerText = ''; // Clear the previous result
+            } else if (userInput % 3 === 0 || userInput % 7 === 0) {
+                // If the number is a multiple of 3 or 7, set result to true
+                let result = true;
+                // Display the result
+                document.getElementById('output').innerText = result;
+            } else {
+                // If the number is not a multiple of 3 or 7, set result to false
+                let result = false;
+                // Display the result
+                document.getElementById('output').innerText = result;
+            }
+        }
+    </script>
+    <!-- Form for user input -->
+    <form>
+        <label for="userNumber">Enter number: </label>
+        <input type="text" id="userNumber">
+        <input type="button" value="Submit" onclick="checkNumber()">
+    </form>
+    <p>
+        <!-- Placeholder for displaying error messages -->
+        <span id="errorMessage" style="color: red;"></span><br>
+        <!-- Placeholder for displaying the result -->
+        Result: <span id="output"></span>
+    </p>
+</body>
+</html>

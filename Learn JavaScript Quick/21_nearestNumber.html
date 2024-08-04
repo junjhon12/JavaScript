@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript program to find the value nearest to 100</title>
+</head>
+<script>
+    function nearestNum() {
+        // Retrieve the input values
+        let userNumber1 = parseFloat(document.getElementById('userNumber1').value);
+        let userNumber2 = parseFloat(document.getElementById('userNumber2').value);
+        let errorMessageElement = document.getElementById('errorMessage');
+        let outputElement = document.getElementById('output');
+
+        // Clear previous messages
+        errorMessageElement.innerHTML = '';
+        outputElement.innerHTML = '';
+
+        // Validate the inputs
+        if (isNaN(userNumber1) || isNaN(userNumber2)) {
+            errorMessageElement.innerHTML = "Please enter valid numbers.";
+            return; // Exit the function if inputs are invalid
+        }
+
+        // Check if the numbers are the same
+        if (userNumber1 === userNumber2) {
+            outputElement.innerHTML = "The numbers are equal.";
+            return;
+        }
+
+        // Calculate the absolute differences from 100
+        let numberCal1 = Math.abs(100 - userNumber1);
+        let numberCal2 = Math.abs(100 - userNumber2);
+
+        // Determine and display the nearest number to 100
+        if (numberCal1 < numberCal2) {
+            outputElement.innerHTML = userNumber1;
+        } else {
+            outputElement.innerHTML = userNumber2;
+        }
+    }
+</script>
+<body>
+    <form onsubmit="event.preventDefault(); nearestNum()">
+        <label for="userNumber1">Number 1: </label>
+        <input type="text" id="userNumber1"><br>
+        <label for="userNumber2">Number 2: </label>
+        <input type="text" id="userNumber2"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="errorMessage" style="color: red;"></p>
+    <p>Result: <span id="output"></span></p>
+</body>
+</html>

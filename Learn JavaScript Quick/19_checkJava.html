@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JavaScript program to check whether a string starts with
+'Java' and false otherwise.</title>
+</head>
+<body>
+    <script>
+        function checkJava() {
+            // Get the value from the input field and trim any whitespace
+            let inputString = document.getElementById('userInput').value.trim();
+
+            // Get references to the error message and output elements
+            let errorMessageElement = document.getElementById('errorMessage');
+            let outputElement = document.getElementById('output');
+
+            // Clear previous error message and result
+            errorMessageElement.innerHTML = '';
+            outputElement.innerHTML = '';
+
+            // Check if the input string is empty
+            if (inputString === '') {
+                // Display an error message if the input is empty
+                errorMessageElement.innerHTML = "Please enter a string.";
+            } else {
+                // Determine if the string starts with "Java"
+                let startsWithJava = inputString.startsWith("Java");
+                
+                // Display the result (true or false) in the output element
+                outputElement.innerHTML = startsWithJava ? "True" : "False";
+            }
+        }
+    </script>
+    <!-- Form for user input; prevent default submission behavior -->
+    <form onsubmit="event.preventDefault(); checkJava();">
+        <label for="userInput">Enter a string: </label>
+        <!-- Input field for the user to enter a string -->
+        <input type="text" id="userInput">
+        <!-- Button to submit the form and trigger the checkJava function -->
+        <input type="submit" value="Check">
+    </form>
+    <!-- Element to display error messages -->
+    <p class="error-message" id="errorMessage"></p>
+    <!-- Element to display the result -->
+    <p>Result: <span class="result" id="output"></span></p>
+</body>
+</html>
