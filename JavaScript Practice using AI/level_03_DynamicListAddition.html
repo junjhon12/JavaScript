@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Dynamic List Addition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background-color: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .remove-btn {
+            background-color: #f44336;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .remove-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Level 3 - Dynamic List Addition</h1>
+        <form id="itemForm">
+            <input type="text" id="itemInput" placeholder="Enter item">
+            <button type="submit">Add Item</button>
+            <p id="errorMessage" class="hidden error"></p>
+        </form>
+        <ul id="itemList"></ul>
+    </div>
+    <script>
+        // JavaScript goes here
+        document.getElementById("itemForm").addEventListener("submit", function(event){
+            event.preventDefault();  // Prevent form from submitting and refreshing the page
+            
+            var userInput = document.getElementById("itemInput");
+            var error = document.getElementById("errorMessage");
+            var itemList = document.getElementById("itemList");
+            
+            // Check if input is empty
+            if (userInput.value.trim() === '') {
+                error.textContent = "Empty input";
+                error.classList.remove("hidden");
+            } else {
+                // Hide error message if any
+                error.classList.add("hidden");
+                
+                // Create a new list item
+                var listItem = document.createElement("li");
+                listItem.textContent = userInput.value.trim();
+                
+                // Create and add "Remove" button to the list item
+                var removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.className = "remove-btn";
+                removeButton.addEventListener("click", function() {
+                    itemList.removeChild(listItem);
+                });
+                
+                listItem.appendChild(removeButton);
+                itemList.appendChild(listItem);
+                
+                // Clear the input field
+                userInput.value = '';
+            }
+        });
+        
+    </script>
+</body>
+</html>

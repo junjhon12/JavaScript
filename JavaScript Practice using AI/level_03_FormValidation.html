@@ -59,17 +59,24 @@
     </div>
     <script>
         // JavaScript goes here
-        /*
-            Form Submission: Add JavaScript to handle form submission.
-            If the text input is empty:
-            Display an error message below the input field.
-            The error message should have the class error.
-            If the text input is not empty:
-            Display a success message below the input field.
-            The success message should have the class success.
-            Prevent Default Form Submission: Ensure the form does not submit in the traditional way and instead uses JavaScript for validation.
-        */
-        const userInput = document.getElementById("textInput").value;
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent traditional form submission
+        
+            // Get the text input and message elements
+            var textInput = document.getElementById('textInput');
+            var message = document.getElementById('message');
+        
+            // Check if the input is empty
+            if (textInput.value.trim() === '') {
+                message.textContent = 'Error: Input cannot be empty.';
+                message.className = 'error';
+                message.classList.remove('hidden');
+            } else {
+                message.textContent = 'Success: Form submitted!';
+                message.className = 'success';
+                message.classList.remove('hidden');
+            }
+        });
         
     </script>
 </body>

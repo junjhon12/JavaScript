@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Interactive Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover {
+            border-color: #4CAF50;
+        }
+
+        .main-image-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .main-image {
+            max-width: 600px;
+            max-height: 400px;
+        }
+
+        .caption {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .navigation-buttons {
+            margin-top: 10px;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Level 3 - Interactive Image Gallery</h1>
+    <div class="gallery-container">
+        <div class="thumbnails">
+            <img src="image1-thumb.jpg" alt="Image 1" class="thumbnail" data-full="image1.jpg" data-caption="This is Image 1">
+            <img src="image2-thumb.jpg" alt="Image 2" class="thumbnail" data-full="image2.jpg" data-caption="This is Image 2">
+            <img src="image3-thumb.jpg" alt="Image 3" class="thumbnail" data-full="image3.jpg" data-caption="This is Image 3">
+            <!-- Add more thumbnails as needed -->
+        </div>
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="image1.jpg" alt="Main Image">
+            <p id="caption" class="caption">This is Image 1</p>
+        </div>
+        <div class="navigation-buttons">
+            <button id="prevButton" class="nav-button">Previous</button>
+            <button id="nextButton" class="nav-button">Next</button>
+        </div>
+    </div>
+    <script>
+        // JavaScript goes here
+        /*
+            Implement the following features:
+            - Display the larger version of the image when a thumbnail is clicked.
+            - Update the caption when an image is displayed.
+            - Implement Previous and Next buttons to navigate through the images.
+        */
+        document.querySelectorAll(".image").forEach(image => {
+            image.addEventListener("click", () => {
+                image.style.transform = "scale(1.5)";
+                image.style.transition = "transform 0.25s ease";
+            })
+        })
+    </script>
+</body>
+</html>

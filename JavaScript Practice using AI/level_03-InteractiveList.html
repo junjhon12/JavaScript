@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Interactive To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background-color: #f4f4f4;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        .delete-btn {
+            background-color: #f44336;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Level 3 - Interactive To-Do List</h1>
+        <form id="taskForm">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button type="submit">Add Task</button>
+            <p id="errorMessage" class="hidden error"></p>
+        </form>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        // JavaScript code starts here
+    
+        // Add an event listener to the form for the "submit" event
+        document.getElementById("taskForm").addEventListener("submit", function(event) {
+            // Prevent the form from submitting normally, which would refresh the page
+            event.preventDefault();
+    
+            // Get the input field element for the new task
+            var newTask = document.getElementById("taskInput");
+            // Get the element that displays error messages
+            var error = document.getElementById("errorMessage");
+            // Get the unordered list element where tasks will be added
+            var taskList = document.getElementById("taskList");
+    
+            // Check if the input field is empty after trimming whitespace
+            if (newTask.value.trim() === '') {
+                // If empty, set an error message and make the error message visible
+                error.textContent = "Please enter a task.";
+                error.classList.remove("hidden");
+            } else {
+                // If not empty, clear the error message and hide it
+                error.textContent = "";
+                error.classList.add("hidden");
+    
+                // Create a new list item element for the task
+                var taskItem = document.createElement("li");
+                // Create a span element to hold the task text
+                var taskText = document.createElement("span");
+                // Set the span's text content to the trimmed value of the input field
+                taskText.textContent = newTask.value.trim();
+                // Append the task text to the list item
+                taskItem.appendChild(taskText);
+    
+                // Create a checkbox input element
+                var checkBox = document.createElement("input");
+                // Set the checkbox's type to "checkbox"
+                checkBox.type = "checkbox";
+                // Assign a class name to the checkbox for styling
+                checkBox.className = "check-btn";
+    
+                // Add an event listener to the checkbox for the "click" event
+                checkBox.addEventListener("click", function() {
+                    // If the checkbox is checked, add the "completed" class to the task text
+                    if (checkBox.checked) {
+                        taskText.classList.add("completed");
+                    } else {
+                        // If the checkbox is unchecked, remove the "completed" class
+                        taskText.classList.remove("completed");
+                    }
+                });
+    
+                // Create a button element for deleting the task
+                var deleteButton = document.createElement("button");
+                // Set the button's text content to "Remove"
+                deleteButton.textContent = "Remove";
+                // Assign a class name to the delete button for styling
+                deleteButton.className = "delete-btn";
+    
+                // Add an event listener to the delete button for the "click" event
+                deleteButton.addEventListener("click", function() {
+                    // Remove the list item from the task list when the button is clicked
+                    taskList.removeChild(taskItem);
+                });
+    
+                // Append the checkbox to the list item
+                taskItem.appendChild(checkBox);
+                // Append the delete button to the list item
+                taskItem.appendChild(deleteButton);
+                // Append the list item to the task list
+                taskList.appendChild(taskItem);
+    
+                // Clear the input field after adding the task
+                newTask.value = '';
+            }
+        });
+        // JavaScript code ends here
+    </script>
+    
+</body>
+</html>

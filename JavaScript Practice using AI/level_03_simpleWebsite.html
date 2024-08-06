@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Simple Website with Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .tab-content {
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Level 3 - Simple Website with Tabs</h1>
+    <div class="tabs">
+        <div class="tab active" data-tab="home">Home</div>
+        <div class="tab" data-tab="about">About</div>
+        <div class="tab" data-tab="contact">Contact</div>
+    </div>
+    <div class="tab-content active" id="home">
+        <h2>Welcome to Our Website</h2>
+        <p>This is the Home page. Welcome to our website where you can find more information about us and contact us if you have any questions.</p>
+    </div>
+    <div class="tab-content" id="about">
+        <h2>About Us</h2>
+        <p>We are a small team of developers passionate about creating useful and engaging web experiences. This website is an example of a simple tabbed interface.</p>
+    </div>
+    <div class="tab-content" id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" rows="5" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+            <p class="message" id="formMessage">Form submission is not yet implemented.</p>
+        </form>
+    </div>
+    <script>
+        // JavaScript goes here
+        /** 
+        Tasks:
+        Tab Navigation:
+            Implement JavaScript to switch between the tabs when they are clicked.
+            Only the content corresponding to the clicked tab should be displayed.
+        Active Tab Styling:
+            The currently active tab should be highlighted with the active class.
+        Contact Form:
+            The "Contact" tab should contain a form that, when submitted, prevents the default form submission behavior and displays a message saying "Form submission is not yet implemented."
+        */
+        // Look at all the tabs on the page and do something with each one
+        document.querySelectorAll(".tab").forEach(tab => {
+            // When you click on a tab
+            tab.addEventListener("click", () => {
+                // Hide everything and make all tabs look normal
+                document.querySelectorAll(".tab, .tab-content").forEach(el => el.classList.remove('active'));
+                
+                // Make the tab you clicked look special
+                tab.classList.add('active');
+                
+                // Find the right content to show based on the tab you clicked
+                // and make that content visible
+                document.getElementById(tab.dataset.tab).classList.add("active");
+            });
+        });
+
+        // When you try to send the contact form
+        document.getElementById("contactForm").addEventListener('submit', (event) => {
+            // Stop the form from sending and refreshing the page
+            event.preventDefault();
+            
+            // Show a message saying we haven't finished setting up the form yet
+            document.getElementById('formMessage').textContent = "Form submission is not yet implemented.";
+        });
+    </script>
+</body>
+</html>
